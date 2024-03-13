@@ -1,0 +1,23 @@
+controllers:
+    resource: ../src/Controller/
+    type: annotation
+
+kernel:
+    resource: ../src/Kernel.php
+    type: annotation
+
+getSuppliers:
+    path: /proveedores
+    controller: App\Controller\SupplierController::getSuppliers
+
+createSuppliers:
+    path: /proveedores/crear
+    controller: App\Controller\SupplierController::createSuppliers
+
+updateSuppliers:
+    path: /proveedores/actualizar/{id}
+    controller: App\Controller\SupplierController::updateSuppliers
+
+deleteSuppliers:
+    path: /proveedores/eliminar/{id}
+    controller: App\Controller\SupplierController::deleteSuppliers

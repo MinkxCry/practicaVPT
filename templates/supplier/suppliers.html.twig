@@ -1,0 +1,48 @@
+{% extends('base.html.twig') %}
+
+{% block title %}
+	<title>Lista de proveedores</title>
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1 class="py-5 text-center">Lista de proveedores</h1>
+		<div class="table-responsive-sm">
+			<table class="table align-middle">
+				<thead class="table-dark">
+					<tr class="align-middle">
+						<th>#</th>
+						<th>NOMBRE</th>
+						<th>E-MAIL</th>
+						<th>TELÉFONO</th>
+						<th>TIPO</th>
+						<th>ESTADO</th>
+						<th>INTRODUCCIÓN</th>
+						<th>ÚLTIMA ACTUALIZACIÓN</th>
+						<th style="text-align: right;">
+							<a href="{{ path('createSuppliers') }}" class="btn btn-success">Agregar</a>
+						</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for supplier in listSuppliers %}
+						<tr>
+							<th scope="row">{{ loop.index }}</th>
+							<td>{{ supplier.nombre }}</td>
+							<td>{{ supplier.email }}</td>
+							<td>{{ supplier.numeroTelefono }}</td>
+							<td>{{ supplier.tipo }}</td>
+							<td>{{ supplier.activo == 1 ? 'Activo' : 'Inactivo' }}</td>
+							<td>{{ supplier.fechaIntroduccion|date('d/m/Y') }}</td>
+							<td>{{ supplier.fechaActualizacion|date('d/m/Y') }}</td>
+							<td>
+								<a href="{{ path('updateSuppliers', {'id': supplier.idProveedor}) }}" class="btn btn-primary">Modificar</a>
+								<a href="{{ path('deleteSuppliers', {'id': supplier.idProveedor}) }}" class="btn btn-danger">Eliminar</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</div>
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends('base.html.twig') %}
+
+{% block title %}
+	<title>Agregar proveedores</title>
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<h1 class="py-5 text-center">Agregar proveedor</h1>
+		{{ form_start(form_suppliers) }}
+		<div class="form-group row">
+			{{ form_row(form_suppliers.nombre) }}
+			{{ form_row(form_suppliers.email) }}
+			{{ form_row(form_suppliers.numeroTelefono) }}
+			{{ form_row(form_suppliers.tipo) }}
+		</div>
+		<div class="form-actions mt-3">
+			{{ form_widget(form_suppliers.submit) }}
+			<a href="{{ path('getSuppliers') }}" class="btn btn-secondary">Cancelar</a>
+		</div>
+		{{ form_end(form_suppliers) }}
+	</div>
+{% endblock %}
